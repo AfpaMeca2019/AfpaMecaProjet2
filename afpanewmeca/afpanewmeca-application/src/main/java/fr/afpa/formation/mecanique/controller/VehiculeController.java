@@ -20,8 +20,6 @@ public class VehiculeController {
 	@Autowired
 	VehiculeService vehiculeService;
 	
-	@Autowired
-	VehiculeService vehiculeService;
 	
 	@GetMapping("/vehicules")
 	public  String listVehicules(Model model) throws Exception {
