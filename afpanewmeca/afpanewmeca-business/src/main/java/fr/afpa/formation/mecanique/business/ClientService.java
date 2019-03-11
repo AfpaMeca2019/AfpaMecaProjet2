@@ -17,5 +17,10 @@ public class ClientService {
 	public List<Client> findAll(){
 		return (List<Client>) cr.findAll();
 	}
+	
+	public Long create(Client client) {		
+		Client savedClient = cr.save(client);
+		return savedClient.getId();
+	}
 
 }
