@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<STYLE type="text/css">
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+</STYLE>
+<title>Liste de tous les clients</title>
+ <ul>
+<li><a href="index.html">Accueil</a></li>
+  <li><a href="news.asp">Client</a></li>
+  <li><a href="contact.asp">O.R.</a></li>
+  <li><a href="about.asp">Administration</a></li>
+</ul> 
+</head>
+<body>
+	<button class="listClient" id="addClient" type="button">Nouveau</button>
+	<table class="listClientTable">
+		<thead>
+			<tr>
+				<th th:text="#{numero}" />
+				<th th:text="#{nom}" />
+				<th th:text="#{prenom}" />
+				<th th:text="#{numeroCarteAfpa}" />
+				<th th:text="#{dateInscription}" />
+				<th th:text="#{statut}" />
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="client : ${clients}">
+				<td th:text="${client.numero}" />
+				<td th:text="${client.nom}" />
+				<td th:text="${client.prenom}" />
+				<td th:text="${client.numeroCarteAfpa}" />
+				<td th:text="${client.dateInscription}" />
+				<td th:text="${client.statut}" />
+				<td width="30"><a th:href="@{'client/detail/' +${client.id}}">
+						<!-- 						<img style="height: 30px;" th:src="@{/resources/img/addToCart.png}" /> -->
+				</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="listClient" id="backToIndex" type="button">Retour</button>
+	<button class="listClient" id="modifierClient" type="button">Modifier</button>
+</body>
+</html>

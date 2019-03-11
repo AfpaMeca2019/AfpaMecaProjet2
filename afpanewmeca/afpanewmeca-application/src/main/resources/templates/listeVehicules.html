@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Liste des Vehicules</title>
+<STYLE type="text/css">
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+</STYLE>
+<title>List de tout les clients</title>
+ <ul>
+  <li><a href="index.html">Accueil</a></li>
+  <li><a href="news.asp">Client</a></li>
+  <li><a href="contact.asp">O.R.</a></li>
+  <li><a href="about.asp">Administration</a></li>
+</ul> 
+
+</head>
+<body>
+
+	<table class="listVehiculesTable">
+		<thead>
+			<tr>
+				<th th:text="#{modele}" />
+				<th th:text="#{marque}" />
+				<th th:text="#{nVIN}" />
+				<th th:text="#{nImmat}" />
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="vehicule : ${vehicules}">
+				<td th:text="${vehicule.modele}" />
+				<td th:text="${vehicule.marque}" />
+				<td th:text="${vehicule.vin}" />
+				<td th:text="${vehicule.immatriculation}" />
+			</tr>
+		</tbody>
+
+
+	</table>
+</body>
+</html>
