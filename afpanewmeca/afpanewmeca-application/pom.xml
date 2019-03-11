@@ -9,15 +9,15 @@
 	<!-- ================================================================================== -->
 	<parent>
 		<groupId>fr.afpa.formation</groupId>
-		<artifactId>AfpaMeca</artifactId>
+		<artifactId>afpanewmeca</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<!-- ================================================================================== -->
 	<!-- == (02.) INFORMATIONS SUR LE PROJET ============================================== -->
 	<!-- ================================================================================== -->
-	<artifactId>AfpaMeca-application</artifactId>
+	<artifactId>afpanewmeca-application</artifactId>
 
-	<name>AfpaMeca-application</name>
+	<name>afpanewmeca-application</name>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 
@@ -39,7 +39,7 @@
 
 		<dependency>
 			<groupId>fr.afpa.formation</groupId>
-			<artifactId>AfpaMeca-business</artifactId>
+			<artifactId>afpanewmeca-business</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

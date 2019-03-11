@@ -14,9 +14,9 @@
 	<!-- == (02.) INFORMATIONS SUR LE PROJET ============================================== -->
 	<!-- ================================================================================== -->
 	<groupId>fr.afpa.formation</groupId>
-	<artifactId>AfpaMeca</artifactId>
+	<artifactId>afpanewmeca</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AfpaMeca</name>
+	<name>afpanewmeca</name>
 	<packaging>pom</packaging>
 	<description>Gestion des Réparations en ligne</description>
 
@@ -74,9 +74,6 @@
 <!-- 	</build> -->
 
   <modules>
-    <module>AfpaMeca-business</module>
-    <module>AfpaMeca-application</module>
-    <module>AfpaMeca-persistence</module>
     <module>afpanewmeca-application</module>
     <module>afpanewmeca-business</module>
     <module>afpanewmeca-persistence</module>
