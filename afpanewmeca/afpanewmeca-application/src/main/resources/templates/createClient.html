@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1 align="center" th:text="#{add_client}" />
+<br />
+	
+<form th:object="${client}" method="post" th:action="@{/client/create}">
+	
+		<span th:text="#{titleNomClient}">TOTO</span>
+		<input type="text" th:value="*{nom}">
+		<br />
+		
+		<input type="text" th:field="#{prenom}" />
+		<br />
+		<input type="text" th:field="#{telephone}" />
+		<br />
+		<input type="text" th:field="#{mail}" />
+		<br />
+		<input type="text" th:field="#{telephoneClient}" />
+		<br />
+		<input type="text" th:field="#{villeAdresseClient}" />
+		<br />
+		<input type="text" th:field="#{codePostalAdresseClient}" />
+		<br />
+		<input type="text" th:field="#{numeroCarteAfpa}" />
+		<br />
+		<input type="text" th:field="#{statut}" />
+		<br />
+		<input type="hidden" th:field="*{id}"/>
+	
+		<input type="submit" th:value="#{create}" />
+	</form>
+	
+	<br />
+	<br />
+
+
+</body>
+</html>
