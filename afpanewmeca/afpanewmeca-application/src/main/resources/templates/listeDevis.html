@@ -31,11 +31,8 @@
 				<td th:text="${dev.numDevis}" />
 				<td th:text="${dev.dateCreation}" />
 				<td th:text="${dev.datePaiement}" />
-				<td th:text="${dev.paie}" />
-				<td th:text="${dev.f}" />
-				<td width="30"><a th:href="@{'client/detail/' +${client.id}}">
-						<!-- 						<img style="height: 30px;" th:src="@{/resources/img/addToCart.png}" /> -->
-				</a></td>
+				<td th:text="${dev.paie.libellePaiement}" />
+				<td th:text="${dev.f.nomFournisseur}" />
 			</tr>
 		</tbody>
 	</table>

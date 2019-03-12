@@ -14,10 +14,10 @@ public class DevisController {
 	@Autowired
 	private DevisService ds;
 	
-	@GetMapping("/")
+	@GetMapping("/devis")
 	public String start(Model m) {
 		m.addAttribute("devis", ds.findAll());
-		return "listDevis";
+		return "listeDevis";
 	}
 	
 	@GetMapping("/createDevis")
