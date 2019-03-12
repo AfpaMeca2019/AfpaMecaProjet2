@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<script>
+function verify(){
+	select = document.getElementById("select");
+	option = select.getElementsByTagName("option");
+	if(option[select.selectedIndex].value == "formateur"){
+		document.getElementById("form").action = "/utilisateur/create/formateur/";
+	}else{
+		document.getElementById("form").action = "/utilisateur/create/stagiaire/";
+	}
+	document.getElementById("form").submit();
+}
+</script>
+</head>
+<body>
+
+<form method="post" id="form" action="">
+	<select id="select">
+		<option value="formateur">Formateur</option>
+		<option value="stagiaire">Stagiaire</option>
+	</select>
+	
+	<input type="submit" onclick="javascript:verify();" />
+</form>
+
+</body>
+</html>
