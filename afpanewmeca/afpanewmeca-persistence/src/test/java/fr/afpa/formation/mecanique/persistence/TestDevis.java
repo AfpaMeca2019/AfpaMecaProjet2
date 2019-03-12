@@ -19,15 +19,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import fr.afpa.formation.mecanique.persistence.entity.or.Devis;
 import fr.afpa.formation.mecanique.persistence.entity.or.DevisItem;
+import fr.afpa.formation.mecanique.persistence.entity.or.Fournisseur;
 import fr.afpa.formation.mecanique.persistence.entity.or.Piece;
+import fr.afpa.formation.mecanique.persistence.entity.typePaiement.TypePaiement;
 import fr.afpa.formation.mecanique.persistence.repository.DevisItemRepository;
 import fr.afpa.formation.mecanique.persistence.repository.DevisRepository;
+import fr.afpa.formation.mecanique.persistence.repository.FournisseurRepository;
 import fr.afpa.formation.mecanique.persistence.repository.PieceRepository;
+import fr.afpa.formation.mecanique.persistence.repository.TypePaiementRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @ContextConfiguration(classes = SmallApp.class)
 public class TestDevis {
+	@Autowired
+	TypePaiementRepository tpr;
+	@Autowired
+	FournisseurRepository fr;
 	@Autowired
 	PieceRepository pc;
 	@Autowired
@@ -44,6 +52,10 @@ public class TestDevis {
 		Piece p1 = new Piece("111", "test1", 12.0);
 		Piece p2 = new Piece("222", "test2", 13.0);
 		Piece p3 = new Piece("333", "test3", 14.0);
+		Fournisseur f = new Fournisseur("001", "test");
+		TypePaiement p = new TypePaiement("Chèque");
+		tpr.save(p);
+		fr.save(f);
 		pc.save(p1);
 		pc.save(p2);
 		pc.save(p3);
@@ -55,8 +67,8 @@ public class TestDevis {
 		dir.save(di2);
 		dir.save(di3);
 		
-		Devis d1 = new Devis(new Date(), "001", new Date());
-		Devis d2 = new Devis(new Date(), "002", new Date());
+		Devis d1 = new Devis(new Date(), "001", new Date(), p, f);
+		Devis d2 = new Devis(new Date(), "002", new Date(), p, f);
 		d1.addDevisItem(di1);
 		d1.addDevisItem(di2);
 		d2.addDevisItem(di3);

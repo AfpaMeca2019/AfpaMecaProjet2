@@ -35,11 +35,13 @@ public class Devis {
 	@ManyToOne
 	private Fournisseur f;
 
-	public Devis(Date dateCreation, String numDevis, Date datePaiement) {
+	public Devis(Date dateCreation, String numDevis, Date datePaiement, TypePaiement tp, Fournisseur leF) {
 		super();
 		this.dateCreation = dateCreation;
 		this.numDevis = numDevis;
 		this.datePaiement = datePaiement;
+		paie = tp;
+		f = leF;
 	}
 	
 	public void addDevisItem(DevisItem di) {
