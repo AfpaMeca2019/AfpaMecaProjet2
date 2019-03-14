@@ -3,88 +3,87 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title th:text="#{creerVehicule}"/>
+<title th:text="#{creerVehicule}" />
 <STYLE type="text/css">
-
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
 li {
-  float: left;
+	float: left;
 }
 
 li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+	background-color: #111;
 }
 </STYLE>
- <ul>
-  <li><a href="index.html" th:text="#{accueil}"/></li>
-  <li><a href="news.asp" th:text="#{client}"/></li>
-  <li><a href="contact.asp" th:text="#{OR}"/></li>
-  <li><a href="about.asp" th:text="#{administration}"/></li>
-</ul> 
+<ul>
+	<li><a href="index.html" th:text="#{accueil}" /></li>
+	<li><a href="news.asp" th:text="#{client}" /></li>
+	<li><a href="contact.asp" th:text="#{OR}" /></li>
+	<li><a href="about.asp" th:text="#{administration}" /></li>
+</ul>
 </head>
 <body>
-<form th:object="${vehicule}" method="post">
+	<form th:object="${vehicule}" method="post">
 
-<table>
-<thead>
-<tr>
-<th th:text="#{creerVehicule}"/>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td th:text="#{marque}"/>
-<td th:text="#{modele}"/>
-</tr>
-<tr>
-<td><input type="text" th:field="*{marque}"/></td>
-<td><input type="text" th:field="*{modele}"/></td>
-</tr>
-<tr>
-<td th:text="#{immatriculation}"/>
-<td th:text="#{vin}"/>
-</tr>
-<tr>
-<td><input type="text" th:field="*{immatriculation}"/></td>
-<td><input type="text" th:field="*{vin}"/></td>
-</tr>
-<tr>
-<td th:text="#{km}"/>
-<td th:text="#{dateMiseEnCirculation}"/>
-</tr>
-<tr>
-<td><input type="text" th:field="*{kilometrage}"/></td>
-<td><input type="text" th:field="*{dateMiseEnCirculation}"/></td>
-</tr>
-<tr>
-<td th:text="#{numeroCarteGrise}"/>
-<td th:text="#{numeroAssurance}"/>
-</tr>
-<tr>
-<td><input type="text" th:field="*{numeroCarteGrise}"/></td>
-<td><input type="text" th:field="*{numeroAssurance}"/></td>
-</tr>
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{creerVehicule}" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{marque}" />
+					<td th:text="#{modele}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{marque}" /></td>
+					<td><input type="text" th:field="*{modele}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{immatriculation}" />
+					<td th:text="#{vin}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{immatriculation}" /></td>
+					<td><input type="text" th:field="*{vin}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{km}" />
+					<td th:text="#{dateMiseEnCirculation}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{kilometrage}" /></td>
+					<td><input type="text" th:field="*{dateMiseEnCirculation}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{numeroCarteGrise}" />
+					<td th:text="#{numeroAssurance}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{numeroCarteGrise}" /></td>
+					<td><input type="text" th:field="*{numeroAssurance}" /></td>
+				</tr>
 
-</tbody>
-</table>
-<input type="submit" th:value="#{sauvegarder}">
-</form>
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
 
 </body>
 </html>
