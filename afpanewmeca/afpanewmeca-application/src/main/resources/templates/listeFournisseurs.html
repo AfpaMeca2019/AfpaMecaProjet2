@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{listeFournisseurs}" />
+<STYLE type="text/css">
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+</STYLE>
+</head>
+<body>
+	<ul>
+		<li><a href="" th:text="#{accueil}"></a></li>
+		<li><a href="" th:text="#{client}"></a></li>
+		<li><a href="" th:text="#{OR}"></a></li>
+		<li><a href="" th:text="#{administration}"></a></li>
+	</ul>
+	<table class="listFourniseursTable">
+		<thead>
+			<tr>
+				<th th:text="#{nom}" />
+				<th th:text="#{code}" />
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="fournisseur : ${fournisseurs}">
+				<td th:text="${fournisseur.nomFournisseur}" />
+				<td th:text="${fournisseur.codeFournisseur}" />
+			</tr>
+		</tbody>
+
+
+	</table>
+	<br />
+	<br />
+
+	<a th:href="@{add/fournisseur/}" style="text-decoration: none"> <input
+		class="listFournisseurs" type="button" th:text="#{nouveau}" />
+	</a>
+
+	<br />
+	<br />
+	<input class="listFournisseurs" type="button" th:text="#{retour}" />
+	<input class="listFournisseurs" type="button" th:text="#{modifier}" />
+</body>
+</html>
