@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+	<ul>
+		<li><a href="index.html">Accueil</a></li>
+		<li><a href="news.asp">Client</a></li>
+		<li><a href="contact.asp">O.R.</a></li>
+		<li><a href="about.asp">Administration</a></li>
+	</ul>
+</head>
+<body>
+	<form th:action="@{/createCQ/}" method="get">
+		<input id="addControleQualite" type="submit" th:value=#{nouveau} />
+	</form>
+	<table class="listControleQualiteTable">
+		<thead>
+			<tr>
+				<th th:text="#{dateDebut}" />
+				<th th:text="#{kilometrageFin}" />
+				<th th:text="#{observation}" />
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="controleQualite : ${listCQ}">
+				<td th:text="${controleQualite.dateDebut}" />
+				<td th:text="${controleQualite.kilometrageFin}" />
+				<td th:text="${controleQualite.observation}" />
+			</tr>
+		</tbody>
+	</table>
+	<button class="listcontroleQualite" id="backToIndex" type="button">Retour</button>
+	<button class="listcontroleQualite" id="modifiercontroleQualite" type="button">Modifier</button>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<form th:object="${pneumatique}" method="post" th:action="@{/doCreatePneumatique/}">
+
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{creerStagiaire}" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{etatPneuAVG}" />
+					<td th:text="#{etatPneuAVD}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{etatPneuAvGauche}" required  /></td>
+					<td><input type="text" th:field="*{etatPneuAvDroit}" required  /></td>
+				</tr>
+				<tr>
+					<td th:text="#{etatPneuARG}" />
+					<td th:text="#{etatPneuARD}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{etatPneuArGauche}" required  /></td>
+					<td><input type="text" th:field="*{etatPneuArDroite}" required  /></td>
+				</tr>
+				<tr>
+					<td th:text="#{etatPneuSecours}" />
+					<td th:text="#{pressionPneuAVG}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{etatPneuSecours}" required /></td>
+					<td><input type="text" th:field="*{pressionPneuAvGauche}" required  /></td>
+				</tr>
+				<tr>
+					<td th:text="#{pressionPneuAVD}" />
+					<td th:text="#{pressionPneuARG}" />
+					<td th:text="#{pressionPneuARD}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{pressionPneuArGauche}" required  /></td>
+					<td><input type="text" th:field="*{pressionPneuAvDroite}" required  /></td>
+					<td><input type="text" th:field="*{pressionPneuArDroite}" required  /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

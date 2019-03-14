@@ -1,6 +1,7 @@
 package fr.afpa.formation.mecanique.persistence.entity.cq;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,14 @@ public class ControleQualite {
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 	private Date dateDebut;
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
 	private Long kilometrageFin;
 	private String observation;
 	@OneToOne
@@ -30,14 +39,6 @@ public class ControleQualite {
 	private Eclairage e;
 	@OneToOne
 	private Visibilite v;
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
 
 	public Long getKilometrageFin() {
 		return kilometrageFin;

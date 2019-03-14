@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<form th:object="${eclairage}" method="post" th:action="@{/doCreateEclairage/}">
+
+
+		<div>
+			<label th:text="#{feuxPosition}"></label><input
+				type=checkbox checked th:field="*{feuxPosition}" />
+		</div>
+		<div>
+			<label th:text="#{eclairageImmat}"></label><input type=checkbox checked
+				th:field="*{eclairageImmatriculation}" />
+		</div>
+		<div>
+			<label th:text="#{feuxCroisement}"></label><input type=checkbox checked
+				th:field="*{feuxCroisement}" />
+		</div>
+		<div>
+			<label th:text="#{feuxRoute}"></label><input type=checkbox checked
+				th:field="*{feuxRoute}" />
+		</div>
+		<div>
+			<label th:text="#{feuxJour}"></label><input
+				type=checkbox checked th:field="*{feuxJour}" />
+		</div>
+		<div>
+			<label th:text="#{feuxDetresse}"></label><input type=checkbox checked
+				th:field="*{feuxDetresse}" />
+		</div>
+		<div>
+			<label th:text="#{feuxStop}"></label><input type=checkbox checked
+				th:field="*{feuxStop}" />
+		</div>
+		<div>
+			<label th:text="#{feuxAntiBrouil}"></label><input type=checkbox checked
+				th:field="*{feuxAntiBrouillard}" />
+		</div>
+		<div>
+			<label th:text="#{feuxRecul}"></label><input type=checkbox
+				checked th:field="*{feuxRecul}" />
+		</div>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>
