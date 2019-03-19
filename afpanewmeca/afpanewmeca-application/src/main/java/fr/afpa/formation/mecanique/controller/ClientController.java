@@ -15,25 +15,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.afpa.formation.mecanique.business.AdresseService;
 import fr.afpa.formation.mecanique.business.ClientService;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Adresse;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Client;
 
 @Controller
 public class ClientController {
 
 	@Autowired
-	ClientService cs;
+	ClientService clientService;
 
-	//@Autowired
-//	AddresseService addresseService;
+	@Autowired
+	AdresseService adresseService;
 
 	@GetMapping("/")
 	public String start(Model model) throws Exception {
-		model.addAttribute("clients", cs.findAll());
+		model.addAttribute("clients", clientService.findAll());
 		return "listClient";
 	}
 
 	@GetMapping("/add/client")
-	public String create(Model model) {
+	public String create(Model model) {	
 		model.addAttribute("client", new Client());
 		return "createClient";
 	}
@@ -43,8 +44,12 @@ public class ClientController {
 		try {
 
 			client.setDateInscription(new Date());
-		//	AdresseService.create(client.getAdresse());
-			cs.create(client);
+			
+			Adresse adresse = client.getAdresse();
+			adresse.setCodePostal("000000");
+			
+			adresseService.create(adresse);
+			clientService.create(client);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
