@@ -16,8 +16,6 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue(value = "CLI")
 public class Client extends Personne {
 
-	@Column(name = "numero", nullable = false, length = 30, unique = true)
-	private String numero;
 	
 	@Column(unique = true, length = 25)
 	private String numeroCarteAfpa;
@@ -54,10 +52,8 @@ public class Client extends Personne {
 	 * TOUS LES ATTRIBUTS Y COMPRIS L'ID.<br/>
 	 * (UTILISE LORS DES OPERATIONS DE RECHERCHE ET D'EXTRACTION 'findBy'). <br/>
 	 */
-	public Client(Long id, String nom, String prenom, String telephone, String mail, 
-			String numero, String numeroCarteAfpa, Date dateInscription, boolean statut) {
+	public Client(Long id, String nom, String prenom, String telephone, String mail,  String numeroCarteAfpa, Date dateInscription, boolean statut) {
 		super(id, nom, prenom, telephone, mail);
-		this.numero = numero;
 		this.numeroCarteAfpa = numeroCarteAfpa;
 		this.dateInscription = dateInscription;
 		this.statut = statut;
@@ -71,23 +67,12 @@ public class Client extends Personne {
 	 * TOUS LES ATTRIBUTS SAUF L'ID.<br/>
 	 * (UTILISE LORS DES OPERATIONS DE CREATION 'create'). <br/>
 	 */
-	public Client(String nom, String prenom, String telephone, String mail,
-			String numero, String numeroCarteAfpa, Date dateInscription, boolean statut) {
+	public Client(String nom, String prenom, String telephone, String mail, String numeroCarteAfpa, Date dateInscription, boolean statut) {
 		super(nom, prenom, telephone, mail);
-		this.numero = numero;
 		this.numeroCarteAfpa = numeroCarteAfpa;
 		this.dateInscription = dateInscription;
 		this.statut = statut;
 		
-	}
-
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
 	}
 
 	public Date getDateInscription() {
@@ -126,7 +111,7 @@ public class Client extends Personne {
 
 	@Override
 	public String toString() {
-		return "Client [numero=" + numero + ", numeroCarteAfpa=" + numeroCarteAfpa + ", dateInscription="
+		return "Client [numeroCarteAfpa=" + numeroCarteAfpa + ", dateInscription="
 				+ dateInscription + ", statut=" + statut + ", id=" + id + ", nom=" + nom + ", prenom=" + prenom
 				+ ", telephone=" + telephone + "]";
 	}

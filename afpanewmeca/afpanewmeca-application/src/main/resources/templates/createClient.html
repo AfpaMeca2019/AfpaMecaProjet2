@@ -2,43 +2,60 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title th:text="#{createClient}" />
 </head>
 <body>
 
-<h1 align="center" th:text="#{add_client}" />
-<br />
 	
-<form th:object="${client}" method="post" th:action="@{/client/create}">
-	
-		<span th:text="#{titleNomClient}">TOTO</span>
-		<input type="text" th:value="*{nom}">
-		<br />
-		
-		<input type="text" th:field="#{prenom}" />
-		<br />
-		<input type="text" th:field="#{telephone}" />
-		<br />
-		<input type="text" th:field="#{mail}" />
-		<br />
-		<input type="text" th:field="#{telephoneClient}" />
-		<br />
-		<input type="text" th:field="#{villeAdresseClient}" />
-		<br />
-		<input type="text" th:field="#{codePostalAdresseClient}" />
-		<br />
-		<input type="text" th:field="#{numeroCarteAfpa}" />
-		<br />
-		<input type="text" th:field="#{statut}" />
-		<br />
-		<input type="hidden" th:field="*{id}"/>
-	
-		<input type="submit" th:value="#{create}" />
-	</form>
-	
-	<br />
-	<br />
 
+	<form th:object="${client}" method="post" >
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{createClient}" />
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<td th:text="#{nom}" />
+					<td th:text="#{prenom}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{nom}" /></td>
+					<td><input type="text" th:field="*{prenom}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{numeroCarteAfpa}" />
+					<td th:text="#{telephone}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{numeroCarteAfpa}" /></td>
+					<td><input type="text" th:field="*{telephone}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{mail}" />
+					
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{mail}" /></td>
+					
+				</tr>
+				<tr>
+					<td th:text="#{Ville}" />
+					<td th:text="#{Adresse}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{adresse.ville}" /></td>
+					<td><input type="text" th:field="*{adresse.adresse}" /></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
 
 </body>
 </html>
+
+

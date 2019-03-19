@@ -52,8 +52,8 @@ public class App implements CommandLineRunner {
 	
 	public void init() throws Exception {
 
-		Client c1 = new Client("Gontrand", "Jean-eude", "0605040708", "123@g.com", "CL001", "ABC123", new Date(), true);
-		Client c2 = new Client("Play", "Henry", "0605040709", "123aze@ff.com", "CL002", "XYZ987", new Date(), true);
+		Client c1 = new Client("Gontrand", "Jean-eude", "0605040708", "123@g.com",  "ABC123", new Date(), true);
+		Client c2 = new Client("Play", "Henry", "0605040709", "123aze@ff.com", "XYZ987", new Date(), true);
 		
 		
 		Vehicule veh1 = new Vehicule("Peugeot", "207CC", 10.000, "GDF54564564PM", "HG54545OP", "AX-777-NG", "25454545454", new Date());

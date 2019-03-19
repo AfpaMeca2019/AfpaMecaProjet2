@@ -39,14 +39,12 @@ li a:hover {
 </ul>
 </head>
 <body>
-	<form th:action="createClient">
-		<button class="listClient" id="addClient" type="submit">Nouveau</button>
-	</form>
+<!-- 		<button class="listClient" id="addClient" type="submit">Nouveau</button> -->
+		<input type="submit" class="listClient" id=addClient value="Nouveau" onclick="window.location='/add/client'">
 
 	<table class="listClientTable">
 		<thead>
 			<tr>
-				<th th:text="#{numero}" />
 				<th th:text="#{nom}" />
 				<th th:text="#{prenom}" />
 				<th th:text="#{numeroCarteAfpa}" />
@@ -57,7 +55,6 @@ li a:hover {
 		</thead>
 		<tbody>
 			<tr th:each="client : ${clients}">
-				<td th:text="${client.numero}" />
 				<td th:text="${client.nom}" />
 				<td th:text="${client.prenom}" />
 				<td th:text="${client.numeroCarteAfpa}" />

@@ -48,7 +48,6 @@ public class TestClient {
 		kiab.setPrenom("Kiab");
 		kiab.setTelephone("0610203040");
 		kiab.setMail("kiab@gmail.com");
-		kiab.setNumero("N1");
 		kiab.setNumeroCarteAfpa("123456789K");
 		kiab.setDateInscription(new Date());
 		kiab.setStatut(true);
@@ -60,7 +59,6 @@ public class TestClient {
 		seb.setPrenom("Seb");
 		seb.setTelephone("061208850");
 		seb.setMail("seb@gmail.com");
-		seb.setNumero("N2");
 		seb.setNumeroCarteAfpa("222556789K");
 		seb.setDateInscription(new Date());
 		seb.setStatut(true);
@@ -72,7 +70,6 @@ public class TestClient {
 		nat.setPrenom("Natalia");
 		nat.setTelephone("0781978850");
 		nat.setMail("nat@gmail.com");
-		nat.setNumero("N3");
 		nat.setNumeroCarteAfpa("1148556789K");
 		nat.setDateInscription(new Date());
 		nat.setStatut(true);
@@ -105,7 +102,6 @@ public class TestClient {
 		olivier.setPrenom("Olivier");
 		olivier.setTelephone("066895850");
 		olivier.setMail("olivier@gmail.com");
-		olivier.setNumero("N4");
 		olivier.setNumeroCarteAfpa("26764789K");
 		olivier.setDateInscription(new Date());
 		olivier.setStatut(true);
@@ -139,13 +135,13 @@ public class TestClient {
 
 	@Test
 	public void update() {
-		String newNumero = "N7";
+		String newName = "N7";
 		try {
 			assertNotNull(idLastClient);
 			Client client = clientRep.findById(idLastClient).get();
-			client.setNumero(newNumero);
+			client.setNom(newName);
 			clientRep.save(client);
-			assertEquals(client.getNumero(), newNumero);
+			assertEquals(client.getNom(), newName);
 
 		} catch (Exception e) {
 			Assert.fail("This exception was not expected");
