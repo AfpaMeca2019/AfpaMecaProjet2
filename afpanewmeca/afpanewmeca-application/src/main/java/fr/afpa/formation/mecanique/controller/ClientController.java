@@ -23,7 +23,7 @@ public class ClientController {
 	@Autowired
 	ClientService cs;
 
-	@Autowired
+	//@Autowired
 //	AddresseService addresseService;
 
 	@GetMapping("/")
