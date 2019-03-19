@@ -41,6 +41,10 @@ public class App implements CommandLineRunner {
 	FournisseurService fournisseurService;
 	@Autowired
 	TypePaiementService paiementService;
+	@Autowired
+	StagiaireRepository stagiaireRepository;
+	@Autowired
+	FormateurRepository formateurRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
@@ -155,6 +159,24 @@ public class App implements CommandLineRunner {
 		d2.setListDevisItem(devisItems2);
 		devisService.createDevis(d2);
 //******************************************************
+		
+		Stagiaire stagiaire1 = new Stagiaire("LACOURT", "Camille", "0154789652", "test@test.fr", "clacourt", "****",
+				"role1", new Date(), null, "AFPA2019");
+		Stagiaire stagiaire2 = new Stagiaire("TELLIER", "Sylvie", "0155721652", "test2@test.fr", "stellier", "****XXX",
+				"role1", new Date(2019-04-1), null, "AFPAFFF2018");
+		
+		
+		stagiaireRepository.save(stagiaire1);
+		stagiaireRepository.save(stagiaire2);
+		
+
+		Formateur formateur1 = new Formateur("FOUCAULT", "JP", "0425698745", "test3@test.fr", "jpfoulc", "****XXXYYY",
+				"role2", new Date(), null);
+		Formateur formateur2 = new Formateur("VIDAL", "JC", "0621198745", "test4@test.fr", "jcvidal", "****XXXYYYZZZ",
+				"jcvidal", new Date(), null);
+		
+		formateurRepository.save(formateur1);
+		formateurRepository.save(formateur2);
 		
 	}
 }
