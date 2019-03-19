@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{creerFournisseur}" />
+<STYLE type="text/css">
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+</STYLE>
+<ul>
+	<li><a href="" th:text="#{accueil}" /></li>
+	<li><a href="" th:text="#{client}" /></li>
+	<li><a href="" th:text="#{OR}" /></li>
+	<li><a href="" th:text="#{administration}" /></li>
+</ul>
+</head>
+<body>
+	<form th:object="${fournisseur}" method="post">
+		<table class="addFourniseurTable">
+			<thead>
+				<tr>
+					<th th:text="#{nom}" />
+					<th th:text="#{code}" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{codeFournisseur}" /></td>
+					<td><input type="text" th:field="*{nomFournisseur}" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+
+	<br />
+	<br />
+
+	<button class="listFournisseurs" type="button" th:text="#{retour}" />
+	<button class="listFournisseurs" type="button" th:text="#{modifier}" />
+</body>
+</html>

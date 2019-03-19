@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${visibilite}" method="post"
+		th:action="@{/doCreateVisibilite/}">
+
+
+		<div>
+			<label th:text="#{pareBrise}"></label><input type=checkbox checked
+				th:field="*{pareBrise}" />
+		</div>
+		<div>
+			<label th:text="#{vitrage}"></label><input type=checkbox checked
+				th:field="*{vitrage}" />
+		</div>
+		<div>
+			<label th:text="#{essuieGlaceAV}"></label><input type=checkbox
+				checked th:field="*{essuieGlaceAvant}" />
+		</div>
+		<div>
+			<label th:text="#{essuieGlaceAR}"></label><input type=checkbox
+				checked th:field="*{essuieGlaceArriere}" />
+		</div>
+		<div>
+			<label th:text="#{laveGlace}"></label><input type=checkbox checked
+				th:field="*{laveGlace}" />
+		</div>
+		<div>
+			<label th:text="#{lavePhare}"></label><input type=checkbox checked
+				th:field="*{lavePhare}" />
+		</div>
+		<div>
+			<label th:text="#{retroInt}"></label><input type=checkbox checked
+				th:field="*{retroInterieur}" />
+		</div>
+		<div>
+			<label th:text="#{retroExt}"></label><input type=checkbox checked
+				th:field="*{retroExterieur}" />
+		</div>
+		<div>
+			<label th:text="#{immat}"></label><input type=checkbox checked
+				th:field="*{immatriculation}" />
+		</div>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

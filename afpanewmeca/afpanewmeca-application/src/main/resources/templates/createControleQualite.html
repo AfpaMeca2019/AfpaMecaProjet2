@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<form th:object="${cq}" method="post" th:action="@{/doCreate/cq/}">
+
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{creerStagiaire}" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{observation}" />
+					<td th:text="#{kilometrageFin}" />
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{observation}" required /></td>
+					<td><input type="text" th:field="*{kilometrageFin}" required /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

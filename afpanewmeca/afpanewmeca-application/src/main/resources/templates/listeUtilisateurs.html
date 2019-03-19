@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<ul>
 		<li><a href="index.html">Accueil</a></li>
 		<li><a href="news.asp">Client</a></li>
@@ -14,28 +15,30 @@
 	</ul>
 </head>
 <body>
-	<input type="submit" class="listDevis"  id=addDevis value="Nouveau"	onclick="window.location='/createDevis'">
-	<table class="listDevisTable">
+	<form th:action="@{/create/}" method="get">
+		<input id="addUtilisateur" type="submit" th:value=#{nouveau} />
+	</form>
+	<table class="listUtilisateurTable">
 		<thead>
 			<tr>
-				<th th:text="#{numDevis}" />
-				<th th:text="#{dateCreationDevis}" />
-				<th th:text="#{datePaiement}" />
-				<th th:text="#{typePaiement}" />
-				<th th:text="#{fournisseur}" />
+				<th th:text="#{nom}" />
+				<th th:text="#{prenom}" />
+				<th th:text="#{telephone}" />
+				<th th:text="#{mail}" />
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="dev : ${devis}">
-				<td th:text="${dev.numDevis}" />
-				<td th:text="${dev.dateCreation}" />
-				<td th:text="${dev.datePaiement}" />
-				<td th:text="${dev.paie.libellePaiement}" />
-				<td th:text="${dev.f.nomFournisseur}" />
+			<tr th:each="user : ${utilisateurs}">
+				<td th:text="${user.nom}" />
+				<td th:text="${user.prenom}" />
+				<td th:text="${user.telephone}" />
+				<td th:text="${user.mail}" />
 			</tr>
 		</tbody>
 	</table>
 	<button class="listDevis" id="backToIndex" type="button">Retour</button>
 	<button class="listDevis" id="modifierlistDevis" type="button">Modifier</button>
+
+</body>
 </html>

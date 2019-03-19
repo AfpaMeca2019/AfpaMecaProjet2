@@ -84,7 +84,7 @@ public class App implements CommandLineRunner {
 		TypePaiement tp1 = new TypePaiement("Chèques");
 		tps.createTypePaiement(tp1);
 		Fournisseur f = new Fournisseur("001", "test");
-		fs.createFournisseur(f);
+		fs.create(f);
 		
 		Devis d1 = new Devis(new Date(), "001", new Date(), tp1, f);
 		ds.createDevis(d1);

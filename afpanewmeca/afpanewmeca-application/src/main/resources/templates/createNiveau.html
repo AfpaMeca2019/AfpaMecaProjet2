@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:object="${niveau}" method="post"
+		th:action="@{/doCreateNiveau/}">
+		<div>
+			<label th:text="#{liquideRefroidissement}"></label><input
+				type=checkbox checked th:field="*{liquideRefroidissement}" />
+		</div>
+		<div>
+			<label th:text="#{laveGlace}"></label><input type=checkbox checked
+				th:field="*{laveGlace}" />
+		</div>
+		<div>
+			<label th:text="#{huileMoteur}"></label><input type=checkbox checked
+				th:field="*{huileMoteur}" />
+		</div>
+		<div>
+			<label th:text="#{liquideFrein}"></label><input type=checkbox checked
+				th:field="*{liquideFrein}" />
+		</div>
+		<div>
+			<label th:text="#{huileDirAssist}"></label><input type=checkbox
+				checked th:field="*{huileDirectionAssistee}" />
+		</div>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

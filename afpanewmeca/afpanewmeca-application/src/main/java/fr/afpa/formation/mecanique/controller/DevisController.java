@@ -23,7 +23,7 @@ public class DevisController {
 	@GetMapping("/createDevis")
 	public String create(Model m) {
 		m.addAttribute("newDevis", new Devis());
-		return "createDevis";
+		return "creerDevis";
 	}
 	
 	@PostMapping("/devis/create")
