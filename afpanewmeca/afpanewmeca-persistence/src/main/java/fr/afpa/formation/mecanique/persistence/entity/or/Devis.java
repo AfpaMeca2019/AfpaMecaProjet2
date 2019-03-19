@@ -31,17 +31,17 @@ public class Devis {
 	@OneToMany
 	private Set<DevisItem> listDevisItem = new HashSet<>();
 	@ManyToOne
-	private TypePaiement paie;
+	private TypePaiement typePaiement;
 	@ManyToOne
-	private Fournisseur f;
+	private Fournisseur fournisseur;
 
-	public Devis(Date dateCreation, String numDevis, Date datePaiement, TypePaiement tp, Fournisseur leF) {
+	public Devis(Date dateCreation, String numDevis, Date datePaiement, TypePaiement typePaiement, Fournisseur fournisseur) {
 		super();
 		this.dateCreation = dateCreation;
 		this.numDevis = numDevis;
 		this.datePaiement = datePaiement;
-		paie = tp;
-		f = leF;
+		this.typePaiement = typePaiement;
+		this.fournisseur = fournisseur;
 	}
 	
 	public void addDevisItem(DevisItem di) {
@@ -77,20 +77,45 @@ public class Devis {
 		this.datePaiement = datePaiement;
 	}
 
-	public TypePaiement getPaie() {
-		return paie;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPaie(TypePaiement paie) {
-		this.paie = paie;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Fournisseur getF() {
-		return f;
+	public Set<DevisItem> getListDevisItem() {
+		return listDevisItem;
 	}
 
-	public void setF(Fournisseur f) {
-		this.f = f;
+	public void setListDevisItem(Set<DevisItem> listDevisItem) {
+		this.listDevisItem = listDevisItem;
 	}
+
+	public TypePaiement getTypePaiement() {
+		return typePaiement;
+	}
+
+	public void setTypePaiement(TypePaiement typePaiement) {
+		this.typePaiement = typePaiement;
+	}
+
+	public Fournisseur getFournisseur() {
+		return fournisseur;
+	}
+
+	public void setFournisseur(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+
+	@Override
+	public String toString() {
+		return "Devis [id=" + id + ", dateCreation=" + dateCreation + ", numDevis=" + numDevis + ", datePaiement="
+				+ datePaiement + ", listDevisItem=" + listDevisItem + ", typePaiement=" + typePaiement.toString()
+				+ ", fournisseur=" + fournisseur.toString() + "]";
+	}
+
+
 
 }

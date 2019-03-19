@@ -32,15 +32,15 @@ public class App implements CommandLineRunner {
 	@Autowired
 	ClientService clientRepository;
 	@Autowired
-	DevisService ds;
+	DevisService devisService;
 	@Autowired
-	PieceService ps;
+	PieceService pieceService;
 	@Autowired
-	DevisItemService dis;
+	DevisItemService devisItemService;
 	@Autowired
-	FournisseurService fs;
+	FournisseurService fournisseurService;
 	@Autowired
-	TypePaiementService tps;
+	TypePaiementService paiementService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
@@ -48,6 +48,7 @@ public class App implements CommandLineRunner {
 
 	public void run(String... args) throws Exception {
 		init();
+		initDevis();
 	}
 	
 	public void init() throws Exception {
@@ -76,17 +77,84 @@ public class App implements CommandLineRunner {
 		clientRepository.create(c1);
 		clientRepository.create(c2);
 		
-		Piece p1 = new Piece("0001", "test", 12.0);
-		ps.create(p1);
+	
+	}
 		
-		DevisItem di1 = new DevisItem(p1, 3);
-		dis.createDevisItem(di1);
-		TypePaiement tp1 = new TypePaiement("Chèques");
-		tps.createTypePaiement(tp1);
-		Fournisseur f = new Fournisseur("001", "test");
-		fs.create(f);
+	public void initDevis() throws Exception {
+
+		Fournisseur fournisseur1 = new Fournisseur("001", "André SansFrapé");
+		fournisseurService.create(fournisseur1);
+		Fournisseur fournisseur2 = new Fournisseur("001", "Sara Croche");
+		fournisseurService.create(fournisseur2);
+
 		
-		Devis d1 = new Devis(new Date(), "001", new Date(), tp1, f);
-		ds.createDevis(d1);
+		TypePaiement typePaiement1 = new TypePaiement("Chèques");
+		paiementService.createTypePaiement(typePaiement1);		
+		TypePaiement typePaiement2 = new TypePaiement("Espèce");
+		paiementService.createTypePaiement(typePaiement2);		
+		TypePaiement typePaiement3 = new TypePaiement("Reins/Organes");
+		paiementService.createTypePaiement(typePaiement3);
+		
+		
+		
+//******************************************************
+		Piece piece1 = new Piece("0001", "test1", 12.0);
+		Piece piece2 = new Piece("0002", "test2", 13.0);
+		Piece piece3 = new Piece("0003", "test3", 14.0);
+		pieceService.create(piece1);
+		pieceService.create(piece2);
+		pieceService.create(piece3);
+
+		DevisItem devisItem1 = new DevisItem(piece1, 3);
+		devisItemService.create(devisItem1);
+		
+		DevisItem devisItem2 = new DevisItem(piece2, 4);
+		devisItemService.create(devisItem2);
+		
+		DevisItem devisItem3 = new DevisItem(piece3, 2);
+		devisItemService.create(devisItem3);
+		
+
+		
+		Devis d1 = new Devis(new Date(), "001", new Date(), typePaiement1, fournisseur1);
+		
+		Set<DevisItem> devisItems1 = new HashSet<>();
+		devisItems1.add(devisItem1);
+		devisItems1.add(devisItem2);
+		devisItems1.add(devisItem3);
+		
+		d1.setListDevisItem(devisItems1);
+		devisService.createDevis(d1);
+//******************************************************
+		
+
+//******************************************************		
+		Piece piece4 = new Piece("0004", "test4", 14.0);
+		Piece piece5 = new Piece("0005", "test5", 15.0);
+		Piece piece6 = new Piece("0006", "test6", 16.0);
+		pieceService.create(piece4);
+		pieceService.create(piece5);
+		pieceService.create(piece6);
+
+		DevisItem devisItem4 = new DevisItem(piece4, 3);
+		devisItemService.create(devisItem4);
+		
+		DevisItem devisItem5 = new DevisItem(piece5, 4);
+		devisItemService.create(devisItem5);
+		
+		DevisItem devisItem6 = new DevisItem(piece6, 2);
+		devisItemService.create(devisItem6);
+		
+		Devis d2 = new Devis(new Date(), "002", new Date(), typePaiement2, fournisseur2);
+		
+		Set<DevisItem> devisItems2 = new HashSet<>();
+		devisItems2.add(devisItem4);
+		devisItems2.add(devisItem5);
+		devisItems2.add(devisItem6);
+		
+		d2.setListDevisItem(devisItems2);
+		devisService.createDevis(d2);
+//******************************************************
+		
 	}
 }

@@ -7,18 +7,23 @@ import org.springframework.stereotype.Service;
 
 import fr.afpa.formation.mecanique.persistence.entity.or.DevisItem;
 import fr.afpa.formation.mecanique.persistence.repository.DevisItemRepository;
+import fr.afpa.formation.mecanique.persistence.repository.PieceRepository;
 
 @Service
 public class DevisItemService {
 	@Autowired
-	DevisItemRepository dir;
+	DevisItemRepository devisItemRepository;
 	
-	public void createDevisItem(DevisItem di) {
-		dir.save(di);
-	}
+	@Autowired
+	PieceRepository pieceRepository;
+	
+	public void create(DevisItem devisItem) {
+		pieceRepository.save(devisItem.getPiece());
+		devisItemRepository.save(devisItem);
+	}	
 	
 	public List<DevisItem> findAll(){
-		return (List<DevisItem>) dir.findAll();
+		return (List<DevisItem>) devisItemRepository.findAll();
 	}
 
 }

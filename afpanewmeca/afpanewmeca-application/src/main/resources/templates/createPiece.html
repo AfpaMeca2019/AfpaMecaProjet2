@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<ul>
+		<li><a href="index.html">Accueil</a></li>
+		<li><a href="news.asp">Client</a></li>
+		<li><a href="contact.asp">O.R.</a></li>
+		<li><a href="about.asp">Administration</a></li>
+	</ul>
+	
+	
+	
+	<form th:object="${newItem}" method="post">
+
+		<h1>Ajouter Pièces</h1>
+		<table class="createDevisTablePiece" style="border: 1px solid black">
+			<tr>
+				<th th:text="#{quantitéePiece}" />
+				<th th:text="#{referencePiece}" />
+				<th th:text="#{libPiece}" />
+				<th th:text="#{prixUnitairePiece}" />
+				<th></th>
+			</tr>
+			<tr>
+				<td><input type="text" th:field="${newItem.nbPiece}"/></td>
+				<td><input type="text" th:field="${newItem.piece.reference}"/></td>
+				<td><input type="text" th:field="${newItem.piece.libelle}"/></td> 
+				<td ><input type="text" th:field="${newItem.piece.prixUnitaire}"/></td>
+			</tr>
+		</table>
+		<button class="listVehicule" id="backToIndex" type="button">Retour</button>
+		<input type="submit" th:value="#{sauvegarder}">
+	</form>
+</body>
+</html>

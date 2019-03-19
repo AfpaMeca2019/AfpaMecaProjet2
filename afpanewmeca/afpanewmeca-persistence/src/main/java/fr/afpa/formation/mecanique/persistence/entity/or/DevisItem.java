@@ -18,7 +18,7 @@ public class DevisItem {
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 	@OneToOne
-	private Piece p;
+	private Piece piece;
 	private int nbPiece;
 
 	public DevisItem() {
@@ -28,16 +28,16 @@ public class DevisItem {
 
 	public DevisItem(Piece p, int nbPiece) {
 		super();
-		this.p = p;
+		this.piece = p;
 		this.nbPiece = nbPiece;
 	}
 
-	public Piece getP() {
-		return p;
+	public Piece getPiece() {
+		return piece;
 	}
 
-	public void setP(Piece p) {
-		this.p = p;
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 
 	public int getNbPiece() {

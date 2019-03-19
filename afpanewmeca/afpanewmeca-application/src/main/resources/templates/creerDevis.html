@@ -13,61 +13,63 @@
 		<li><a href="about.asp">Administration</a></li>
 	</ul>
 	<form th:object="${newDevis}" method="post">
-
-
 		<h1>Fournisseur</h1>
-		<table class="createDevisTableFournisseur">
+		<table class="createDevisTableFournisseur"
+			style="border: 1px solid black">
 
 			<tr>
 				<th th:text="#{fournisseur}" />
 				<th th:text="#{numDevisFournisseur}" />
 			</tr>
 			<tr>
-				<!-- 				<select th:field="*{fournisseurs}"> -->
-				<!-- 					<option th:each="fournisseur : ${fournisseurs}" th:value="${i}" -->
-				<!-- 						th:text="${fournisseur}" th:selected="${fournisseur.id==0}"></option> -->
-				<!-- 				</select> -->
-				<td><input type="text" th:field="*{f.nomFournisseur}" /></td>
+				<td><select th:field="*{fournisseur}">
+						<option th:each="fournisseur : ${listFournisseur}" th:value="${fournisseur.id}" th:text="${fournisseur}" th:selected="${fournisseur.id==1}"></option>
+				</select></td>
 				<td><input type="text" th:field="*{numDevis}" /></td>
 			</tr>
 		</table>
 
 		<h1>Pièces</h1>
-		<table class="createDevisTablePiece">
-
+		<button class="createDevisTablePieceAdd" type="button" th:text="#{btnCreateDevisAddPiece}" onclick="window.location='/createDevisItem'">+</button>
+		<table class="createDevisTablePiece" style="border: 1px solid black">
 			<tr>
 				<th th:text="#{quantitéePiece}" />
 				<th th:text="#{referencePiece}" />
 				<th th:text="#{libPiece}" />
 				<th th:text="#{prixUnitairePiece}" />
-				<th />
+				<th></th>
 			</tr>
-			<tr>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
-				<td><input type="text" /></td>
+			<tr th:each="item : ${newDevis.listDevisItem}">
+				<td th:text="${item.nbPiece}"></td>
+				<td th:text="${item.piece.reference}" />
+				<td th:text="${item.piece.libelle}" />
+				<td th:text="${item.piece.prixUnitaire}" />
 				<td>
-					<button class="createDevisTablePieceRemove" type="button">-</button>
+					<button class="createDevisTablePieceRemove" type="button" th:text="#{btnCreateDevisRemovePiece}">-</button>
 				</td>
 			</tr>
+<!-- 			<tr> -->
+<!-- 				<td><input type="text" th:field="${newItem.nbPiece}" style="display:none;" /></td> -->
+<!-- 				<td><input type="text" th:field="${newItem.piece.reference}" style="display:none;" /></td> -->
+<!-- 				<td><input type="text" th:field="${newItem.piece.libelle}" style="display:none;" /></td>  -->
+<!-- 				<td ><input type="text" th:field="${newItem.piece.prixUnitaire}" style="display:none;" /></td> -->
+<!-- 			</tr> -->
 		</table>
 		<span class="prixTotalPieceTitle" th:text="#{prixTotalPieceTitle}"></span>
 		<span class="prixTotalPieceAmount" th:text="#{prixTotalPieceAmount}"></span>
 		<span class="prixTotalPieceMoney" th:text="#{prixTotalPieceMoney}"></span>
-		<br/>
-		<button class="createDevisTablePieceAdd" type="button">+</button>
-		<br/>
-
-
-<!-- 		<select th:field="*{typesPaiment}"> -->
-<!-- 			<option th:each="tp : ${typesPaiment}" th:value="${i}" -->
-<!-- 				th:text="${tp}" th:selected="${tp.id==0}"></option> -->
-<!-- 		</select>  -->
-		<span>AJOUTER DATE DE PAIEMENT</span> 
-		<br/>
+		<br /> 
+		<br />		
+		
+		<select th:field="*{typePaiement}">
+			<option th:each="tp : ${listTypePaiement}" th:value="${tp.id}"
+				th:text="${tp}" th:selected="${tp.id==1}"></option>
+		</select> 
+		
+		<br />
+		<br />	
 		<button class="listVehicule" id="backToIndex" type="button">Retour</button>
 		<input type="submit" th:value="#{sauvegarder}">
-			
+	</form>
 </body>
 </html>
