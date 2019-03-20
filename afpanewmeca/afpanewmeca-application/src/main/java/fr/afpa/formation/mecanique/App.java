@@ -22,7 +22,11 @@ import fr.afpa.formation.mecanique.persistence.entity.or.Fournisseur;
 import fr.afpa.formation.mecanique.persistence.entity.or.Piece;
 import fr.afpa.formation.mecanique.persistence.entity.typePaiement.TypePaiement;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Client;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Formateur;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Stagiaire;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Vehicule;
+import fr.afpa.formation.mecanique.persistence.repository.FormateurRepository;
+import fr.afpa.formation.mecanique.persistence.repository.StagiaireRepository;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
@@ -45,25 +49,28 @@ public class App implements CommandLineRunner {
 	StagiaireRepository stagiaireRepository;
 	@Autowired
 	FormateurRepository formateurRepository;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
 
 	public void run(String... args) throws Exception {
-		init();
+		initClient();
 		initDevis();
+		initPerson();
 	}
-	
-	public void init() throws Exception {
 
-		Client c1 = new Client("Gontrand", "Jean-eude", "0605040708", "123@g.com",  "ABC123", new Date(), true);
+	public void initClient() throws Exception {
+
+		Client c1 = new Client("Gontrand", "Jean-eude", "0605040708", "123@g.com", "ABC123", new Date(), true);
 		Client c2 = new Client("Play", "Henry", "0605040709", "123aze@ff.com", "XYZ987", new Date(), true);
-		
-		
-		Vehicule veh1 = new Vehicule("Peugeot", "207CC", 10.000, "GDF54564564PM", "HG54545OP", "AX-777-NG", "25454545454", new Date());
-		Vehicule veh2 = new Vehicule("Mercedes", "A", 50.000, "GHG33544654MP", "AXA54654", "XS-533-NB", "564964513131r", new Date());
-		Vehicule veh3 = new Vehicule("BMW", "X5", 80.000, "XD65469JH", "LF8432", "CD-123-DK", "5465484646854ppl", new Date());
+
+		Vehicule veh1 = new Vehicule("Peugeot", "207CC", 10.000, "GDF54564564PM", "HG54545OP", "AX-777-NG",
+				"25454545454", new Date());
+		Vehicule veh2 = new Vehicule("Mercedes", "A", 50.000, "GHG33544654MP", "AXA54654", "XS-533-NB", "564964513131r",
+				new Date());
+		Vehicule veh3 = new Vehicule("BMW", "X5", 80.000, "XD65469JH", "LF8432", "CD-123-DK", "5465484646854ppl",
+				new Date());
 
 		vehiculeRepository.create(veh1);
 		vehiculeRepository.create(veh2);
@@ -71,7 +78,7 @@ public class App implements CommandLineRunner {
 
 		Set<Vehicule> listVehC1 = new HashSet<>();
 		listVehC1.add(veh1);
-		Set<Vehicule> listVehC2 = new HashSet<>();	
+		Set<Vehicule> listVehC2 = new HashSet<>();
 		listVehC2.add(veh2);
 		listVehC2.add(veh3);
 
@@ -80,10 +87,9 @@ public class App implements CommandLineRunner {
 
 		clientRepository.create(c1);
 		clientRepository.create(c2);
-		
-	
+
 	}
-		
+
 	public void initDevis() throws Exception {
 
 		Fournisseur fournisseur1 = new Fournisseur("001", "André SansFrapé");
@@ -91,16 +97,13 @@ public class App implements CommandLineRunner {
 		Fournisseur fournisseur2 = new Fournisseur("001", "Sara Croche");
 		fournisseurService.create(fournisseur2);
 
-		
 		TypePaiement typePaiement1 = new TypePaiement("Chèques");
-		paiementService.createTypePaiement(typePaiement1);		
+		paiementService.createTypePaiement(typePaiement1);
 		TypePaiement typePaiement2 = new TypePaiement("Espèce");
-		paiementService.createTypePaiement(typePaiement2);		
+		paiementService.createTypePaiement(typePaiement2);
 		TypePaiement typePaiement3 = new TypePaiement("Reins/Organes");
 		paiementService.createTypePaiement(typePaiement3);
-		
-		
-		
+
 //******************************************************
 		Piece piece1 = new Piece("0001", "test1", 12.0);
 		Piece piece2 = new Piece("0002", "test2", 13.0);
@@ -111,26 +114,23 @@ public class App implements CommandLineRunner {
 
 		DevisItem devisItem1 = new DevisItem(piece1, 3);
 		devisItemService.create(devisItem1);
-		
+
 		DevisItem devisItem2 = new DevisItem(piece2, 4);
 		devisItemService.create(devisItem2);
-		
+
 		DevisItem devisItem3 = new DevisItem(piece3, 2);
 		devisItemService.create(devisItem3);
-		
 
-		
 		Devis d1 = new Devis(new Date(), "001", new Date(), typePaiement1, fournisseur1);
-		
+
 		Set<DevisItem> devisItems1 = new HashSet<>();
 		devisItems1.add(devisItem1);
 		devisItems1.add(devisItem2);
 		devisItems1.add(devisItem3);
-		
+
 		d1.setListDevisItem(devisItems1);
 		devisService.createDevis(d1);
 //******************************************************
-		
 
 //******************************************************		
 		Piece piece4 = new Piece("0004", "test4", 14.0);
@@ -142,41 +142,42 @@ public class App implements CommandLineRunner {
 
 		DevisItem devisItem4 = new DevisItem(piece4, 3);
 		devisItemService.create(devisItem4);
-		
+
 		DevisItem devisItem5 = new DevisItem(piece5, 4);
 		devisItemService.create(devisItem5);
-		
+
 		DevisItem devisItem6 = new DevisItem(piece6, 2);
 		devisItemService.create(devisItem6);
-		
+
 		Devis d2 = new Devis(new Date(), "002", new Date(), typePaiement2, fournisseur2);
-		
+
 		Set<DevisItem> devisItems2 = new HashSet<>();
 		devisItems2.add(devisItem4);
 		devisItems2.add(devisItem5);
 		devisItems2.add(devisItem6);
-		
+
 		d2.setListDevisItem(devisItems2);
 		devisService.createDevis(d2);
 //******************************************************
-		
+
+	}
+
+	private void initPerson() {
 		Stagiaire stagiaire1 = new Stagiaire("LACOURT", "Camille", "0154789652", "test@test.fr", "clacourt", "****",
 				"role1", new Date(), null, "AFPA2019");
 		Stagiaire stagiaire2 = new Stagiaire("TELLIER", "Sylvie", "0155721652", "test2@test.fr", "stellier", "****XXX",
-				"role1", new Date(2019-04-1), null, "AFPAFFF2018");
-		
-		
+				"role1", new Date(2019 - 04 - 1), null, "AFPAFFF2018");
+
 		stagiaireRepository.save(stagiaire1);
 		stagiaireRepository.save(stagiaire2);
-		
 
 		Formateur formateur1 = new Formateur("FOUCAULT", "JP", "0425698745", "test3@test.fr", "jpfoulc", "****XXXYYY",
 				"role2", new Date(), null);
 		Formateur formateur2 = new Formateur("VIDAL", "JC", "0621198745", "test4@test.fr", "jcvidal", "****XXXYYYZZZ",
 				"jcvidal", new Date(), null);
-		
+
 		formateurRepository.save(formateur1);
 		formateurRepository.save(formateur2);
-		
+
 	}
 }

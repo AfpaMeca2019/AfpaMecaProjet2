@@ -97,7 +97,9 @@ public class DevisController {
 
 	@GetMapping("/createDevisItem")
 	public String createDevisItem(Model m, HttpServletRequest request) throws Exception {
-
+		//save le devis, save les pieces existante
+		
+		//faire fonction "Sauvegarder" pour la récupératrion de la new piece et j'ajouter dans le model
 		
 		m.addAttribute("newItem", new DevisItem());
 		return "createPiece";
