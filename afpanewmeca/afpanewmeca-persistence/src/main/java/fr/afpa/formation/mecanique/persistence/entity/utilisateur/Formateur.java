@@ -8,13 +8,11 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value = "FOR") //petit-enfant
 public class Formateur extends Utilisateur {
-
 	/**
 	 * <b>CONSTRUCTEUR SANS ARGUMENT</b>
 	 */	
 	public Formateur() {
 		super();
-		
 	}
 
 	/**
@@ -25,7 +23,6 @@ public class Formateur extends Utilisateur {
 	public Formateur(Long id, String nom, String prenom, String telephone, String mail, String identifiant,
 			String motDePasse, String role, Date inscription, Date radiation) {
 		super(id, nom, prenom, telephone, mail, identifiant, motDePasse, role, inscription, radiation);
-		
 	}
 
 	/**
@@ -43,8 +40,4 @@ public class Formateur extends Utilisateur {
 	public String toString() {
 		return "Formateur [ " +  super.toString() + "]";
 	}
-	
-
-	
-
 }

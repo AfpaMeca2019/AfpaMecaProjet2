@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<script>
+function retour(){
+	window.location = "/utilisateur";
+}
+</script>
+</head>
+<body>
+
+	<ul>
+		<li><a href="index.html">Accueil</a></li>
+		<li><a href="news.asp">Client</a></li>
+		<li><a href="contact.asp">O.R.</a></li>
+		<li><a href="about.asp">Administration</a></li>
+	</ul>
+</head>
+<body >
+	
+	<table class="listUtilisateurTable">
+		<thead>
+			<tr>
+				<th th:text="#{nom}" />
+				<th th:text="#{prenom}" />
+				<th th:text="#{telephone}" />
+				<th th:text="#{mail}" />
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="st : ${stagiaireSearch}">
+				<td th:text="${st.nom}" />
+				<td th:text="${st.prenom}" />
+				<td th:text="${st.telephone}" />
+				<td th:text="${st.mail}" />
+			</tr>
+		</tbody>
+	</table>
+	<button class="listDevis" id="backToIndex" type="button" onClick="javascript:retour();">Retour</button>
+	<button class="listDevis" id="modifierlistDevis" type="button">Modifier</button>
+
+</body>
+</html>

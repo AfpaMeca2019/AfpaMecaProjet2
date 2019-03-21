@@ -7,10 +7,10 @@ import javax.persistence.Entity;
 
 @Entity //on ne met pas ni Inheritance, ni DiscriminatorColumn, car ca va dans la grand-père Personne
 public abstract class Utilisateur extends Personne { //abstract, car s'est une classe parent, qui aura 3 classes-enfants
-
+	
 	@Column(name = "identifiant", nullable = false, length = 50, unique = true)
 	private String identifiant; // login
-
+	
 	@Column(name = "motDePasse", nullable = false, length = 25)
 	private String motDePasse;
 
@@ -106,5 +106,4 @@ public abstract class Utilisateur extends Personne { //abstract, car s'est une c
 		return "Utilisateur [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", role=" + role
 				+ ", inscription=" + inscription + ", radiation=" + radiation + "]";
 	}
-
 }

@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.afpa.formation.mecanique.business.ClientService;
 import fr.afpa.formation.mecanique.business.DevisItemService;
 import fr.afpa.formation.mecanique.business.DevisService;
+import fr.afpa.formation.mecanique.business.FiliereService;
 import fr.afpa.formation.mecanique.business.FournisseurService;
 import fr.afpa.formation.mecanique.business.PieceService;
 import fr.afpa.formation.mecanique.business.TypePaiementService;
@@ -22,6 +23,7 @@ import fr.afpa.formation.mecanique.persistence.entity.or.Fournisseur;
 import fr.afpa.formation.mecanique.persistence.entity.or.Piece;
 import fr.afpa.formation.mecanique.persistence.entity.typePaiement.TypePaiement;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Client;
+import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Filiere;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Formateur;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Stagiaire;
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Vehicule;
@@ -49,6 +51,8 @@ public class App implements CommandLineRunner {
 	StagiaireRepository stagiaireRepository;
 	@Autowired
 	FormateurRepository formateurRepository;
+	@Autowired
+	FiliereService fs;
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
@@ -163,10 +167,19 @@ public class App implements CommandLineRunner {
 	}
 
 	private void initPerson() {
+		
+		Filiere mma = new Filiere("MMA");
+		Filiere ma = new Filiere("MA");
+		Filiere tea = new Filiere("TEA");
+		
+		fs.createFiliere(mma);
+		fs.createFiliere(ma);
+		fs.createFiliere(tea);
+		
 		Stagiaire stagiaire1 = new Stagiaire("LACOURT", "Camille", "0154789652", "test@test.fr", "clacourt", "****",
-				"role1", new Date(), null, "AFPA2019");
+				"role1", new Date(), null, "AFPA2019", mma);
 		Stagiaire stagiaire2 = new Stagiaire("TELLIER", "Sylvie", "0155721652", "test2@test.fr", "stellier", "****XXX",
-				"role1", new Date(2019 - 04 - 1), null, "AFPAFFF2018");
+				"role1", new Date(2019 - 04 - 1), null, "AFPAFFF2018", ma);
 
 		stagiaireRepository.save(stagiaire1);
 		stagiaireRepository.save(stagiaire2);

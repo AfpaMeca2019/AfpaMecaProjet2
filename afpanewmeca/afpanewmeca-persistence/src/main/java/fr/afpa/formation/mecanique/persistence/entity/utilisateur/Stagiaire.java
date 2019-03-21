@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Utilisateur;
 
@@ -13,7 +14,9 @@ import fr.afpa.formation.mecanique.persistence.entity.utilisateur.Utilisateur;
 public class Stagiaire extends Utilisateur {
 
 	@Column(name = "numeroCarteAfpa", nullable = false, length = 30, unique = true)
-	public String numeroCarteAfpa;
+	private String numeroCarteAfpa;
+	@ManyToOne
+	private Filiere f;
 
 	/**
 	 * <b>CONSTRUCTEUR SANS ARGUMENT</b>
@@ -28,9 +31,10 @@ public class Stagiaire extends Utilisateur {
 	 * (UTILISE LORS DES OPERATIONS DE RECHERCHE ET D'EXTRACTION 'findBy'). <br/>
 	 */
 	public Stagiaire(Long id, String nom, String prenom, String telephone, String mail, String identifiant,
-			String motDePasse, String role, Date inscription, Date radiation, String numeroCarteAfpa) {
+			String motDePasse, String role, Date inscription, Date radiation, String numeroCarteAfpa, Filiere f) {
 		super(id, nom, prenom, telephone, mail, identifiant, motDePasse, role, inscription, radiation);
 		this.numeroCarteAfpa = numeroCarteAfpa;
+		this.f = f;
 	}
 
 	/**
@@ -39,9 +43,10 @@ public class Stagiaire extends Utilisateur {
 	 * (UTILISE LORS DES OPERATIONS DE CREATION 'create'). <br/>
 	 */
 	public Stagiaire(String nom, String prenom, String telephone, String mail, String identifiant, String motDePasse,
-			String role, Date inscription, Date radiation, String numeroCarteAfpa) {
+			String role, Date inscription, Date radiation, String numeroCarteAfpa, Filiere f) {
 		super(nom, prenom, telephone, mail, identifiant, motDePasse, role, inscription, radiation);
 		this.numeroCarteAfpa = numeroCarteAfpa;
+		this.f = f;
 	}
 
 	public String getNumeroCarteAfpa() {
@@ -56,5 +61,12 @@ public class Stagiaire extends Utilisateur {
 	public String toString() {
 		return "Formateur [ " + super.toString() + "numeroCarteAfpa=" + numeroCarteAfpa + "]";
 	}
-	
+
+	public Filiere getF() {
+		return f;
+	}
+
+	public void setF(Filiere f) {
+		this.f = f;
+	}
 }

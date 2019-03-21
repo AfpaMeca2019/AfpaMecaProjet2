@@ -45,6 +45,16 @@
 				<tr>
 					<td><input type="text" th:field="*{numeroCarteAfpa}" /></td>
 				</tr>
+				<tr>
+				<td th:text="#{filiere}" />
+				</tr>
+				<tr>
+				<td>
+					<select th:field="*{f}">
+						<option th:each="filiere : ${listeFiliere}" th:value="${filiere.id}" th:text="${filiere.libelle}" />
+					</select>
+				</td>
+				</tr>
 
 			</tbody>
 		</table>

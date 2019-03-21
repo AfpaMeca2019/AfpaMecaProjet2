@@ -20,4 +20,12 @@ public class StagiaireService {
 	public List<Stagiaire> findAll(){
 		return (List<Stagiaire>) fr.findAll();
 	}
+	
+	public List<Stagiaire> findByCarte(String carte) {
+		return fr.findByCarteAfpa(carte);
+	}
+	
+	public List<Stagiaire> findByFiliere(String f){
+		return fr.findByFiliere(f);
+	}
 }
