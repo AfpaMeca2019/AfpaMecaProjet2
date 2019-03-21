@@ -69,7 +69,9 @@
 				<td th:text="${user.nom}" />
 				<td th:text="${user.prenom}" />
 				<td th:text="${user.telephone}" />
-				<td th:text="${user.mail}" />
+				<td>
+				<a th:href="'mailto:'+${user.mail}"><span th:text="${user.mail}"></span></a>
+				</td>
 			</tr>
 		</tbody>
 	</table>

@@ -20,6 +20,10 @@ public class ControleQualite {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
+	public Long getId() {
+		return id;
+	}
+
 	private Date dateDebut;
 	public Date getDateDebut() {
 		return dateDebut;
