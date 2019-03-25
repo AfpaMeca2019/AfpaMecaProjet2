@@ -7,10 +7,11 @@
 </head>
 <body>
 	<ul>
-		<li><a href="index.html">Accueil</a></li>
-		<li><a href="news.asp">Client</a></li>
-		<li><a href="contact.asp">O.R.</a></li>
-		<li><a href="about.asp">Administration</a></li>
+		<li> <a th:href="@{'/'}">Accueil</a></li>
+		<li> <a th:href="@{'clients/'}">List Clients</a></li>
+		<li> <a th:href="@{'vehicules/'}">List Vehicule</a></li>
+		<li> <a th:href="@{'utilisateur'}">List Utilisateurs</a></li>
+		<li> <a th:href="@{'devis'}">List Devis</a></li>
 	</ul>
 </head>
 <body>

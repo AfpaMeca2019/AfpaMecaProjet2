@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.afpa.formation.mecanique.persistence.entity.or.Fournisseur;
 import fr.afpa.formation.mecanique.persistence.entity.typePaiement.TypePaiement;
 import fr.afpa.formation.mecanique.persistence.repository.TypePaiementRepository;
 
@@ -25,6 +26,21 @@ public class TypePaiementService {
 		}
 
 		return findAll;
+	}
+	
+	
+	public TypePaiement findById(Long id) throws Exception {
+		if (id == null) {
+			throw new Exception("TypePaiement findById: l'id est null");
+		}
+
+		TypePaiement typePaiement = tpr.findById(id).get();
+
+		if (typePaiement == null) {
+			throw new Exception("TypePaiement findById: le TypePaiement est null");
+		}
+
+		return typePaiement;
 	}
 
 }

@@ -7,10 +7,11 @@
 <body>
 
 	<ul>
-		<li><a href="index.html">Accueil</a></li>
-		<li><a href="news.asp">Client</a></li>
-		<li><a href="contact.asp">O.R.</a></li>
-		<li><a href="about.asp">Administration</a></li>
+		<li> <a th:href="@{'/'}">Accueil</a></li>
+		<li> <a th:href="@{'clients/'}">List Clients</a></li>
+		<li> <a th:href="@{'vehicules/'}">List Vehicule</a></li>
+		<li> <a th:href="@{'utilisateur'}">List Utilisateurs</a></li>
+		<li> <a th:href="@{'devis'}">List Devis</a></li>
 	</ul>
 	
 	
@@ -20,17 +21,17 @@
 		<h1>Ajouter Pièces</h1>
 		<table class="createDevisTablePiece" style="border: 1px solid black">
 			<tr>
-				<th th:text="#{quantitéePiece}" />
 				<th th:text="#{referencePiece}" />
 				<th th:text="#{libPiece}" />
 				<th th:text="#{prixUnitairePiece}" />
+				<th th:text="#{quantitéePiece}" />
 				<th></th>
 			</tr>
 			<tr>
-				<td><input type="text" th:field="${newItem.nbPiece}"/></td>
 				<td><input type="text" th:field="${newItem.piece.reference}"/></td>
 				<td><input type="text" th:field="${newItem.piece.libelle}"/></td> 
 				<td ><input type="text" th:field="${newItem.piece.prixUnitaire}"/></td>
+				<td><input type="text" th:field="${newItem.nbPiece}"/></td>
 			</tr>
 		</table>
 		<button class="listVehicule" id="backToIndex" type="button">Retour</button>

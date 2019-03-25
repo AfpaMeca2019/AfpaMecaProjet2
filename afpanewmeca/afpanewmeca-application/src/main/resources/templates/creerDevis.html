@@ -3,73 +3,114 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+	function submitFormForAddPiece() {
+		document.getElementById("isPiece").value = "create";
+		
+		document.getElementById("createDevis").submit();
+	}
+	function submitFormForDeletePiece() {
+		document.getElementById("isPiece").value = "delete";
+		
+		document.getElementById("createDevis").submit();
+	}
+</script>
 </head>
 <body>
 
 	<ul>
-		<li><a href="index.html">Accueil</a></li>
-		<li><a href="news.asp">Client</a></li>
-		<li><a href="contact.asp">O.R.</a></li>
-		<li><a href="about.asp">Administration</a></li>
+		<li><a th:href="@{'/'}">Accueil</a></li>
+		<li><a th:href="@{'clients/'}">List Clients</a></li>
+		<li><a th:href="@{'vehicules/'}">List Vehicule</a></li>
+		<li><a th:href="@{'utilisateur'}">List Utilisateurs</a></li>
+		<li><a th:href="@{'devis'}">List Devis</a></li>
 	</ul>
-	<form th:object="${newDevis}" method="post">
+	<form th:object="${devis}" method="post" id="createDevis">
 		<h1>Fournisseur</h1>
-		<table class="createDevisTableFournisseur"
-			style="border: 1px solid black">
+		<table class="createDevisTableFournisseur" style="border: 1px solid black">
 
 			<tr>
 				<th th:text="#{fournisseur}" />
 				<th th:text="#{numDevisFournisseur}" />
 			</tr>
 			<tr>
-				<td><select th:field="*{fournisseur}">
-						<option th:each="fournisseur : ${listFournisseur}" th:value="${fournisseur.id}" th:text="${fournisseur}" th:selected="${fournisseur.id==1}"></option>
+				<td><select name="fournisseur">
+						<option th:each="f : ${listFournisseur}"
+							th:value="${f.id}"
+							th:text="${f.nomFournisseur}"
+							th:selected="(${selectedFournisseur} == ${f.id})">
+						</option>
 				</select></td>
 				<td><input type="text" th:field="*{numDevis}" /></td>
 			</tr>
 		</table>
+		selectedFournisseur: <span th:text = ${selectedFournisseur}></span>
+		
 
 		<h1>Pièces</h1>
-		<button class="createDevisTablePieceAdd" type="button" th:text="#{btnCreateDevisAddPiece}" onclick="window.location='/createDevisItem'">+</button>
+		
+		<button class="createDevisTablePieceAdd" type="button"
+			th:text="#{btnCreateDevisAddPiece}"
+			onclick="submitFormForAddPiece()">+</button>
+			
 		<table class="createDevisTablePiece" style="border: 1px solid black">
 			<tr>
-				<th th:text="#{quantitéePiece}" />
 				<th th:text="#{referencePiece}" />
 				<th th:text="#{libPiece}" />
 				<th th:text="#{prixUnitairePiece}" />
+				<th th:text="#{quantitéePiece}" />
 				<th></th>
 			</tr>
-			<tr th:each="item : ${newDevis.listDevisItem}">
-				<td th:text="${item.nbPiece}"></td>
+			<tr th:each="item : ${devis.listDevisItem}">
+<!-- 				<td th:text="${item.id}" /> -->
 				<td th:text="${item.piece.reference}" />
 				<td th:text="${item.piece.libelle}" />
 				<td th:text="${item.piece.prixUnitaire}" />
+				<td th:text="${item.nbPiece}"></td>
 				<td>
-					<button class="createDevisTablePieceRemove" type="button" th:text="#{btnCreateDevisRemovePiece}">-</button>
+					<button class="createDevisTablePieceRemove" 
+						type="button"
+						th:text="#{btnCreateDevisRemovePiece}"
+						th:onclick="'javascript:submitFormForDeletePiece();'">-</button>
 				</td>
 			</tr>
-<!-- 			<tr> -->
-<!-- 				<td><input type="text" th:field="${newItem.nbPiece}" style="display:none;" /></td> -->
-<!-- 				<td><input type="text" th:field="${newItem.piece.reference}" style="display:none;" /></td> -->
-<!-- 				<td><input type="text" th:field="${newItem.piece.libelle}" style="display:none;" /></td>  -->
-<!-- 				<td ><input type="text" th:field="${newItem.piece.prixUnitaire}" style="display:none;" /></td> -->
-<!-- 			</tr> -->
+<!-- 			' + ${item.id} + '  -->
+
+
+			<!-- 			<tr> -->
+			<!-- 				<td><input type="text" th:field="${newItem.nbPiece}" style="display:none;" /></td> -->
+			<!-- 				<td><input type="text" th:field="${newItem.piece.reference}" style="display:none;" /></td> -->
+			<!-- 				<td><input type="text" th:field="${newItem.piece.libelle}" style="display:none;" /></td>  -->
+			<!-- 				<td ><input type="text" th:field="${newItem.piece.prixUnitaire}" style="display:none;" /></td> -->
+			<!-- 			</tr> -->
 		</table>
-		<span class="prixTotalPieceTitle" th:text="#{prixTotalPieceTitle}"></span>
-		<span class="prixTotalPieceAmount" th:text="#{prixTotalPieceAmount}"></span>
-		<span class="prixTotalPieceMoney" th:text="#{prixTotalPieceMoney}"></span>
+		
+		<span th:text="#{prixTotalPieceTitle}"></span> 
+		<span th:text="#{prixTotalPieceAmount}"></span> 
+		<span th:text="#{prixTotalPieceMoney}"></span> 
 		<br /> 
-		<br />		
-		
-		<select th:field="*{typePaiement}">
-			<option th:each="tp : ${listTypePaiement}" th:value="${tp.id}"
-				th:text="${tp}" th:selected="${tp.id==1}"></option>
-		</select> 
-		
+		<br /> 
+		<span th:text="#{moyenDePaiement}"></span>
 		<br />
-		<br />	
+		
+		
+		<select name="typePaiement">
+			<option th:each="tp : ${listTypePaiement}" 
+				th:value="${tp.id}"
+				th:text="${tp.libellePaiement}" 
+				th:selected="(${selectedTypePaiment} == ${tp.id})">
+			</option>
+		</select> 	
+		<br /> 
+		selectedTypePaiment: <span th:text = ${selectedTypePaiment}></span>
+			
+			
+		<br /> 
+		<br />
 		<button class="listVehicule" id="backToIndex" type="button">Retour</button>
-		<input type="submit" th:value="#{sauvegarder}">
+		<input type="submit" th:value="#{sauvegarder}"> 
+		<input type="hidden" id="isPiece" name="isPiece" value="null">
 	</form>
 </body>
 </html>

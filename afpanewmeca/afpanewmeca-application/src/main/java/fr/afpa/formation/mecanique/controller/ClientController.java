@@ -28,6 +28,11 @@ public class ClientController {
 	AdresseService adresseService;
 
 	@GetMapping("/")
+	public String index(Model model) throws Exception {
+		return "index";
+	}
+	
+	@GetMapping("/clients")
 	public String start(Model model) throws Exception {
 		model.addAttribute("clients", clientService.findAll());
 		return "listClient";
